@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35617.110 d17.13
+VisualStudioVersion = 17.13.35617.110
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaffeApi", "CaffeApi\CaffeApi.csproj", "{F3381307-0157-44D5-9141-0C490D6BCD19}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caffe.Api", "CaffeApi\Caffe.Api.csproj", "{F3381307-0157-44D5-9141-0C490D6BCD19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caffe.Api.Domain", "Caffe.Api.Domain\Caffe.Api.Domain.csproj", "{AEB55AF7-CBFC-45C7-BEC3-D38337D77749}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caffe.Api.UnitTests", "Caffe.Api.UnitTests\Caffe.Api.UnitTests.csproj", "{E0FF6F9B-4707-47A4-B3F4-7596350A5296}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{F3381307-0157-44D5-9141-0C490D6BCD19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3381307-0157-44D5-9141-0C490D6BCD19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3381307-0157-44D5-9141-0C490D6BCD19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEB55AF7-CBFC-45C7-BEC3-D38337D77749}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEB55AF7-CBFC-45C7-BEC3-D38337D77749}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEB55AF7-CBFC-45C7-BEC3-D38337D77749}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEB55AF7-CBFC-45C7-BEC3-D38337D77749}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0FF6F9B-4707-47A4-B3F4-7596350A5296}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0FF6F9B-4707-47A4-B3F4-7596350A5296}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0FF6F9B-4707-47A4-B3F4-7596350A5296}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0FF6F9B-4707-47A4-B3F4-7596350A5296}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
