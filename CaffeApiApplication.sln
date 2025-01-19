@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35617.110
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caffe.Api", "CaffeApi\Caffe.Api.csproj", "{F3381307-0157-44D5-9141-0C490D6BCD19}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caffe.Api", "Caffe.Api\Caffe.Api.csproj", "{F3381307-0157-44D5-9141-0C490D6BCD19}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caffe.Api.Domain", "Caffe.Api.Domain\Caffe.Api.Domain.csproj", "{AEB55AF7-CBFC-45C7-BEC3-D38337D77749}"
 EndProject
