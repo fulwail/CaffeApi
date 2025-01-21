@@ -1,4 +1,5 @@
-﻿using Caffe.Api.Domain.Models;
+﻿using Caffe.Api.Domain.Interceptors;
+using Caffe.Api.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace Caffe.Api.Domain
     {
         public DbSet<MenuProduct> MenuProducts { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderMenuProduct> OrderMenuProduct  { get; set;}
         public CaffeContext(DbContextOptions<CaffeContext> options) : base(options)
         {
         }
