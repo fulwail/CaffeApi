@@ -35,14 +35,14 @@ namespace Caffe.Api.Controllers
             return Ok(id);
         }
         [HttpPut("{id}")]
-        public async Task<ActionResult<Guid>> UpdateMenuProduct([FromBody] CreateOrUpdateMenuProduct createItem, [FromRoute] Guid id)
+        public async Task<ActionResult<Guid>> UpdateMenuProduct([FromBody] CreateOrUpdateMenuProduct updateItem, [FromRoute] Guid id)
         {
-            bool isDuplicate = await _service.IsDuplicateName(createItem.Name);
+            bool isDuplicate = await _service.IsDuplicateName(updateItem.Name);
             if (isDuplicate)
             {
                 return BadRequest(DuplicateMessage);
             }
-            await _service.CreateMenuProduct(createItem);
+            await _service.UpdateMenuProduct(updateItem,id);
             return Ok(id);
         }
         [HttpDelete("{id}")]

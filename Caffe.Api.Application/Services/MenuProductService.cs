@@ -45,5 +45,11 @@ namespace Caffe.Api.Application.Services
         {
             await _repository.RestoreMenuProduct(id);
         }
+
+        public async Task<MenuProductDto> UpdateMenuProduct(CreateOrUpdateMenuProduct updateItem, Guid Id)
+        {
+            var entity= await _repository.UpdateMenuProduct(updateItem.Name, Id);
+            return _mapper.Map<MenuProductDto>(entity);
+        }
     }
 }

@@ -9,5 +9,6 @@ namespace Caffe.Api.Application.Services
         Task<IReadOnlyCollection<MenuProductDto>> GetMenus(bool showDeleted);
         Task<bool> IsDuplicateName(string name,Guid? id=null);
         Task RestoreMenuProduct(Guid id);
+        Task<MenuProductDto> UpdateMenuProduct(CreateOrUpdateMenuProduct updateItem, Guid Id);
     }
 }

@@ -62,5 +62,16 @@ namespace Caffe.Api.Domain.Repositories
                 await _context.SaveChangesAsync();
             }
         }
+
+        public async Task<MenuProduct> UpdateMenuProduct(string name, Guid id)
+        {
+            var entity = await _context.MenuProducts.FindAsync(id);
+            if (entity != null)
+            {
+                entity.Name = name;
+                await _context.SaveChangesAsync();
+            }
+            return entity;
+        }
     }
 }
