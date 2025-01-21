@@ -1,16 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Caffe.Api.Domain.Interceptors;
+using Caffe.Api.Domain.Repositories;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Infrastructure;
 using Polly;
-using System;
-using System.Collections.Generic;
 using System.Data.Common;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Caffe.Api.Domain.Extensions
 {
@@ -33,11 +30,13 @@ namespace Caffe.Api.Domain.Extensions
                         BuildOptions(npgsqlOptions);
                         npgsqlOptions.MigrationsAssembly(typeof(ContextExtensions).GetTypeInfo().Assembly.GetName().Name);
                     }
-                );
+                )
+                .AddInterceptors(new SafeDeleteInterceptor());
             });
-
+            AddRepositories(services);
             return services;
         }
+
         public static async Task<IHost> MigrateEfDbContext(this IHost host)
         {
             using (var scope = host.Services.CreateScope())
@@ -60,6 +59,10 @@ namespace Caffe.Api.Domain.Extensions
 
             return host;
         }
-      
+        private static void AddRepositories(this IServiceCollection services)
+        {
+            services.AddTransient<IMenuProductRepository,MenuProductRepository>();
+        }
+
     }
 }

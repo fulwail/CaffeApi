@@ -13,6 +13,6 @@ namespace Caffe.Api.Domain.Models
         public DateTime Created { get; set; }
         public PaymentType PaymentType {get;set;}
         public OrderStatusType Status { get; set; }
-        public List<MenuProduct> Products { get; set; }
+        public List<OrderMenuProduct> Products { get; set; }
     }
 }
