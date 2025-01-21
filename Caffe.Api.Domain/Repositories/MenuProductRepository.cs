@@ -38,9 +38,14 @@ namespace Caffe.Api.Domain.Repositories
             }
         }
 
-        public async Task<IReadOnlyCollection<MenuProduct>> GetMenus()
+        public async Task<IReadOnlyCollection<MenuProduct>> GetMenus(bool showDeleted)
         {
-            return await _context.MenuProducts.ToListAsync();
+            var entities = _context.MenuProducts.AsQueryable();
+
+            if (showDeleted)
+                entities = entities.IgnoreQueryFilters();
+
+            return await entities.ToListAsync();
         }
 
         public async Task<bool> IsDuplicateName(string name, Guid? id)

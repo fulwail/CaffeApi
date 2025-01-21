@@ -10,16 +10,16 @@ namespace Caffe.Api.Controllers
     {
        
         private readonly IMenuProductService _service;
-
+        private const string DuplicateMessage = "ƒанный продукт уже существует в меню";
         public MenuProductController(IMenuProductService service)
         {
             _service = service;
         }
  
         [HttpGet()]
-        public async Task<ActionResult<IReadOnlyCollection<MenuProductDto>>> GetMenus()
+        public async Task<ActionResult<IReadOnlyCollection<MenuProductDto>>> GetMenus([FromQuery] bool showDeleted=false)
         {
-            var items =await _service.GetMenus();
+            var items =await _service.GetMenus(showDeleted);
             return Ok(items);
         }
 
@@ -29,7 +29,7 @@ namespace Caffe.Api.Controllers
             bool isDuplicate= await _service.IsDuplicateName(createItem.Name);
             if (isDuplicate)
             {
-                return BadRequest("ƒанный продукт уже существует в меню");
+                return BadRequest(DuplicateMessage);
             }
             var id = await _service.CreateMenuProduct(createItem);
             return Ok(id);
@@ -40,7 +40,7 @@ namespace Caffe.Api.Controllers
             bool isDuplicate = await _service.IsDuplicateName(createItem.Name);
             if (isDuplicate)
             {
-                return BadRequest("ƒанный продукт уже существует в меню");
+                return BadRequest(DuplicateMessage);
             }
             await _service.CreateMenuProduct(createItem);
             return Ok(id);

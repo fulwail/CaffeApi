@@ -30,11 +30,11 @@ namespace Caffe.Api.Application.Services
            await _repository.DeleteMenuProduct(id);
         }
 
-        public async Task<IReadOnlyCollection<MenuProductDto>> GetMenus()
+        public async Task<IReadOnlyCollection<MenuProductDto>> GetMenus(bool showDeleted)
         {
-           var entities=await _repository.GetMenus();
+           var entities=await _repository.GetMenus(showDeleted);
            return _mapper.Map<IReadOnlyCollection<MenuProductDto>> (entities);
-        }
+        }    
 
         public async Task<bool> IsDuplicateName(string name, Guid? id = null)
         {
