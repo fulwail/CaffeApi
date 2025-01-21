@@ -1,3 +1,5 @@
+using Caffe.Api.Application.Extensions;
+using Caffe.Api.Application.Profiles;
 using Caffe.Api.Domain.Extensions;
 using Microsoft.Extensions.Configuration;
 
@@ -10,6 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.InitEfDbContext(builder.Configuration);
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 
