@@ -17,5 +17,11 @@ namespace Caffe.Api.Domain
         public CaffeContext(DbContextOptions<CaffeContext> options) : base(options)
         {
         }
+ 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<MenuProduct>()
+                .HasQueryFilter(x => x.IsDeleted == false);
+        }
     }
 }

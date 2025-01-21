@@ -9,5 +9,9 @@ namespace Caffe.Api.Domain.Models
     public class SafeDeletableEntity : Entity
     {
         public bool IsDeleted { get; set; }
+        public void Restore()
+        {
+            IsDeleted = false;
+        }
     }
 }
