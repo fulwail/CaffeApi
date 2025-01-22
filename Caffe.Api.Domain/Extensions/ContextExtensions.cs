@@ -63,6 +63,7 @@ namespace Caffe.Api.Domain.Extensions
         private static void AddRepositories(this IServiceCollection services)
         {
             services.AddTransient<IMenuProductRepository,MenuProductRepository>();
+            services.AddTransient<IOrderRepository, OrderRepository>();
         }
 
     }

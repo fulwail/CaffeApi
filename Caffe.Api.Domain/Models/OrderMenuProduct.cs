@@ -9,8 +9,8 @@ namespace Caffe.Api.Domain.Models
     public class OrderMenuProduct: Entity
     {
         public Guid OrderId {  get; set; }  
-        public required Order Order { get; set; }
+        public Order Order { get; set; }
         public Guid ProductMenuId { get; set; }
-        public required MenuProduct ProductMenu { get; set; }
+        public MenuProduct ProductMenu { get; set; }
     }
 }
