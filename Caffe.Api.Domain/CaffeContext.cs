@@ -9,15 +9,16 @@ using System.Threading.Tasks;
 
 namespace Caffe.Api.Domain
 {
-    public class CaffeContext:DbContext
+    public class CaffeContext : DbContext, ICaffeContext
     {
         public DbSet<MenuProduct> MenuProducts { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<OrderMenuProduct> OrderMenuProduct  { get; set;}
+        public DbSet<OrderMenuProduct> OrderMenuProduct { get; set; }
         public CaffeContext(DbContextOptions<CaffeContext> options) : base(options)
         {
+
         }
- 
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<MenuProduct>()

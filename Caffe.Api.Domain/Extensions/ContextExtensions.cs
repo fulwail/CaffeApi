@@ -22,7 +22,7 @@ namespace Caffe.Api.Domain.Extensions
                     errorCodesToAdd: new List<string>());
             }
 
-            services.AddDbContext<CaffeContext>(options =>
+            services.AddDbContext<ICaffeContext,CaffeContext>(options =>
             {
                 options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"),
                     npgsqlOptions =>
@@ -55,6 +55,7 @@ namespace Caffe.Api.Domain.Extensions
                 await retry.ExecuteAsync(async () => {
                     await context.Database.MigrateAsync();   
                 });
+                
             }
 
             return host;

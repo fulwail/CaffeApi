@@ -10,9 +10,9 @@ namespace Caffe.Api.Domain.Repositories
 {
     public class MenuProductRepository : IMenuProductRepository
     {
-        private readonly CaffeContext _context;
+        private readonly ICaffeContext _context;
 
-        public MenuProductRepository(CaffeContext context)
+        public MenuProductRepository(ICaffeContext context)
         {
             _context = context;
         }
@@ -48,7 +48,7 @@ namespace Caffe.Api.Domain.Repositories
             return await entities.ToListAsync();
         }
 
-        public async Task<bool> IsDuplicateName(string name, Guid? id)
+        public async Task<bool> IsDuplicateName(string name, Guid? id=null)
         {
             return await _context.MenuProducts.AnyAsync(x => x.Name.ToLower() == name.ToLower()&& x.Id!=id);
         }
