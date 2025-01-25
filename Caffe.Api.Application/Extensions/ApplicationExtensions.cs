@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 namespace Caffe.Api.Application.Extensions
 {
     public static class ApplicationExtensions
-    {
+    { 
         public static void InitServices(this IServiceCollection services)
         {
-            services.AddTransient<IMenuProductService,MenuProductService >();
-            services.AddTransient<IOrderService, OrderService>();
+            services.AddScoped<IMenuProductService,MenuProductService >();
+            services.AddScoped<IOrderService, OrderService>();
         }
     }
 }
