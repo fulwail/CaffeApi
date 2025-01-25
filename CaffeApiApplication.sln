@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caffe.Api.UnitTests", "Caff
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caffe.Api.Application", "Caffe.Api.Application\Caffe.Api.Application.csproj", "{86FC3247-AF6E-4CB3-A22F-A5DBC871C655}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caffe.Api.Infrastructure", "Caffe.Api.Infrastucture\Caffe.Api.Infrastructure.csproj", "{A5A1AC6E-036A-4F3E-8D44-87611215A5A4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{86FC3247-AF6E-4CB3-A22F-A5DBC871C655}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86FC3247-AF6E-4CB3-A22F-A5DBC871C655}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86FC3247-AF6E-4CB3-A22F-A5DBC871C655}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5A1AC6E-036A-4F3E-8D44-87611215A5A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5A1AC6E-036A-4F3E-8D44-87611215A5A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5A1AC6E-036A-4F3E-8D44-87611215A5A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5A1AC6E-036A-4F3E-8D44-87611215A5A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

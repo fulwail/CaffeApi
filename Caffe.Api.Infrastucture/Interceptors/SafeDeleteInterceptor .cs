@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Caffe.Api.Domain.Models.Core;
 
-namespace Caffe.Api.Domain.Interceptors
+namespace Caffe.Api.Infrastructure.Interceptors
 {
     public class SafeDeleteInterceptor : SaveChangesInterceptor
     {

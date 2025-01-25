@@ -1,7 +1,7 @@
 ﻿using Caffe.Api.Domain.Enums;
 using Caffe.Api.Domain.Models;
 
-namespace Caffe.Api.Domain.Repositories
+namespace Caffe.Api.Infrastructure.Repositories
 {
     public interface IOrderRepository
     {

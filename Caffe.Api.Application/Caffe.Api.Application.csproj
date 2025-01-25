@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Caffe.Api.Domain\Caffe.Api.Domain.csproj" />
+    <ProjectReference Include="..\Caffe.Api.Infrastucture\Caffe.Api.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

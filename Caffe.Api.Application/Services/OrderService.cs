@@ -3,7 +3,7 @@ using Caffe.Api.Application.Dtos.MenuProduct;
 using Caffe.Api.Application.Dtos.Order;
 using Caffe.Api.Domain.Enums;
 using Caffe.Api.Domain.Models;
-using Caffe.Api.Domain.Repositories;
+using Caffe.Api.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;

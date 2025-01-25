@@ -1,5 +1,6 @@
-﻿using Caffe.Api.Domain.Interceptors;
-using Caffe.Api.Domain.Repositories;
+﻿using Caffe.Api.Infrastructure;
+using Caffe.Api.Infrastructure.Interceptors;
+using Caffe.Api.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,7 +10,7 @@ using Polly;
 using System.Data.Common;
 using System.Reflection;
 
-namespace Caffe.Api.Domain.Extensions
+namespace Caffe.Api.Infrastructure.Extensions
 {
     public static class ContextExtensions
     {
@@ -22,7 +23,7 @@ namespace Caffe.Api.Domain.Extensions
                     errorCodesToAdd: new List<string>());
             }
 
-            services.AddDbContext<ICaffeContext,CaffeContext>(options =>
+            services.AddDbContext<ICaffeContext, CaffeContext>(options =>
             {
                 options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"),
                     npgsqlOptions =>
@@ -33,7 +34,7 @@ namespace Caffe.Api.Domain.Extensions
                 )
                 .AddInterceptors(new SafeDeleteInterceptor());
             });
-            AddRepositories(services);
+            services.AddRepositories();
             return services;
         }
 
@@ -42,7 +43,7 @@ namespace Caffe.Api.Domain.Extensions
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
-                var context = ServiceProviderServiceExtensions.GetService<CaffeContext>(services);
+                var context = services.GetService<CaffeContext>();
 
                 var retry = Policy.Handle<DbException>()
                     .WaitAndRetryAsync(new[]
@@ -52,17 +53,18 @@ namespace Caffe.Api.Domain.Extensions
                         TimeSpan.FromSeconds(10)
                     });
 
-                await retry.ExecuteAsync(async () => {
-                    await context.Database.MigrateAsync();   
+                await retry.ExecuteAsync(async () =>
+                {
+                    await context.Database.MigrateAsync();
                 });
-                
+
             }
 
             return host;
         }
         private static void AddRepositories(this IServiceCollection services)
         {
-            services.AddTransient<IMenuProductRepository,MenuProductRepository>();
+            services.AddTransient<IMenuProductRepository, MenuProductRepository>();
             services.AddTransient<IOrderRepository, OrderRepository>();
         }
 

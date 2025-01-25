@@ -1,6 +1,6 @@
 using Caffe.Api.Application.Extensions;
 using Caffe.Api.Application.Profiles;
-using Caffe.Api.Domain.Extensions;
+using Caffe.Api.Infrastructure.Extensions;
 using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);

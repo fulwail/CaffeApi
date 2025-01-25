@@ -1,7 +1,7 @@
 ﻿using Caffe.Api.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Caffe.Api.Domain
+namespace Caffe.Api.Infrastructure
 {
     public interface ICaffeContext
     {

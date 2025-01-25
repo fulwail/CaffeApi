@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Caffe.Api.Domain.Repositories
+namespace Caffe.Api.Infrastructure.Repositories
 {
     public class OrderRepository : IOrderRepository
     {
@@ -38,7 +38,7 @@ namespace Caffe.Api.Domain.Repositories
         public async Task ChangeStatus(Guid id, OrderStatusType status)
         {
             var entity = await _context.Orders.FindAsync(id);
-            
+
             if (entity != null)
             {
                 if (entity.IsTerminalStatus)
@@ -48,31 +48,31 @@ namespace Caffe.Api.Domain.Repositories
             }
         }
         public async Task<IReadOnlyCollection<Order>> GetOrders(DateTime dateBegin, DateTime dateEnd, OrderStatusType status)
-        { 
+        {
             return await _context.Orders
-                .Include(x=>x.Products)
-                .ThenInclude(x=>x.ProductMenu)
+                .Include(x => x.Products)
+                .ThenInclude(x => x.ProductMenu)
                 .Where(x => dateBegin <= x.Created && x.Created <= dateEnd && status == x.Status)
                 .ToListAsync();
         }
 
         public async Task<IReadOnlyCollection<MenuProduct>> ChangeProductMenuList(Guid orderId, Guid[] menuProductIds)
         {
-            var entity = await _context.Orders.Include(x=>x.Products).FirstOrDefaultAsync(x=>x.Id==orderId);
-            
+            var entity = await _context.Orders.Include(x => x.Products).FirstOrDefaultAsync(x => x.Id == orderId);
+
             if (entity == null) return null;
 
             _context.OrderMenuProduct.RemoveRange(entity.Products);
 
-            var products = await _context.MenuProducts.Where(x=>menuProductIds.Contains(x.Id)).ToArrayAsync();
+            var products = await _context.MenuProducts.Where(x => menuProductIds.Contains(x.Id)).ToArrayAsync();
 
             var productsOrderRelation = products.Select(x => new OrderMenuProduct()
             {
                 Id = Guid.NewGuid(),
-                Order=entity,
+                Order = entity,
                 OrderId = orderId,
                 ProductMenuId = x.Id,
-                ProductMenu=x
+                ProductMenu = x
             });
             await _context.OrderMenuProduct.AddRangeAsync(productsOrderRelation);
             await _context.SaveChangesAsync();
@@ -81,7 +81,7 @@ namespace Caffe.Api.Domain.Repositories
 
         public async Task<bool> IsTerminalStatus(Guid id)
         {
-            return await _context.Orders.Where(x=>x.Id==id).Select(x=>x.IsTerminalStatus).FirstOrDefaultAsync();
+            return await _context.Orders.Where(x => x.Id == id).Select(x => x.IsTerminalStatus).FirstOrDefaultAsync();
         }
     }
 }

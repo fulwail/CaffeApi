@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Caffe.Api.Domain.Migrations
+namespace Caffe.Api.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class CreateMenuProductTable : Migration

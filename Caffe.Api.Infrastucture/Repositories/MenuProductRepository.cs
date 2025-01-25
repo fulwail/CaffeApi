@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Caffe.Api.Domain.Repositories
+namespace Caffe.Api.Infrastructure.Repositories
 {
     public class MenuProductRepository : IMenuProductRepository
     {
@@ -19,8 +19,9 @@ namespace Caffe.Api.Domain.Repositories
 
         public async Task<Guid> CreateMenuProduct(string name)
         {
-            var entity= new MenuProduct {
-                Id=Guid.NewGuid(),
+            var entity = new MenuProduct
+            {
+                Id = Guid.NewGuid(),
                 Name = name
             };
             _context.MenuProducts.Add(entity);
@@ -30,8 +31,8 @@ namespace Caffe.Api.Domain.Repositories
 
         public async Task DeleteMenuProduct(Guid id)
         {
-            var entity= await _context.MenuProducts.FindAsync(id);
-            if (entity != null) 
+            var entity = await _context.MenuProducts.FindAsync(id);
+            if (entity != null)
             {
                 _context.MenuProducts.Remove(entity);
                 await _context.SaveChangesAsync();
@@ -48,14 +49,14 @@ namespace Caffe.Api.Domain.Repositories
             return await entities.ToListAsync();
         }
 
-        public async Task<bool> IsDuplicateName(string name, Guid? id=null)
+        public async Task<bool> IsDuplicateName(string name, Guid? id = null)
         {
-            return await _context.MenuProducts.AnyAsync(x => x.Name.ToLower() == name.ToLower()&& x.Id!=id);
+            return await _context.MenuProducts.AnyAsync(x => x.Name.ToLower() == name.ToLower() && x.Id != id);
         }
 
         public async Task RestoreMenuProduct(Guid id)
         {
-            var entity = await _context.MenuProducts.IgnoreQueryFilters().FirstOrDefaultAsync(x=>x.Id==id);
+            var entity = await _context.MenuProducts.IgnoreQueryFilters().FirstOrDefaultAsync(x => x.Id == id);
             if (entity != null)
             {
                 entity.Restore();

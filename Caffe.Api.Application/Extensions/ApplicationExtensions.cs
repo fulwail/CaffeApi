@@ -1,5 +1,5 @@
 ﻿using Caffe.Api.Application.Services;
-using Caffe.Api.Domain.Repositories;
+using Caffe.Api.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;

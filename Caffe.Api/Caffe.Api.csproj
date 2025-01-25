@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Caffe.Api.Application\Caffe.Api.Application.csproj" />
+    <ProjectReference Include="..\Caffe.Api.Infrastucture\Caffe.Api.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
