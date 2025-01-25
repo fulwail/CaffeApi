@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Caffe.Api.Domain.Models;
+using Caffe.Api.Domain.Models.Core;
 
 namespace Caffe.Api.Domain.Interceptors
 {

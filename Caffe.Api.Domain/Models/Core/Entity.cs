@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Caffe.Api.Domain.Models
+namespace Caffe.Api.Domain.Models.Core
 {
-    public class Entity
+    public abstract class Entity
     {
         public Guid Id { get; set; }
     }

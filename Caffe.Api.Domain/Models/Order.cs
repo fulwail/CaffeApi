@@ -1,4 +1,5 @@
 ﻿using Caffe.Api.Domain.Enums;
+using Caffe.Api.Domain.Models.Core;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
